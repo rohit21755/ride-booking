@@ -8,13 +8,21 @@ interface StripePaymentButtonProps {
 }
 
 // Initialize Stripe
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ""
+const stripePromise = stripeKey.startsWith("pk_") 
+  ? loadStripe(stripeKey)
+  : null
 
 export const StripePaymentButton = ({
   paymentSession,
   isLoading = false,
 }: StripePaymentButtonProps) => {
   const handlePayment = async () => {
+    if (!stripePromise) {
+      console.error("Stripe is not configured")
+      return
+    }
+
     const stripe = await stripePromise
 
     if (!stripe) {

@@ -1,4 +1,4 @@
-import { Bus, Truck, Crown } from "lucide-react";
+import { Bus, Truck, Crown, Zap } from "lucide-react";
 import { Car } from "lucide-react";
 import { CarPackageSlug } from "../types";
 
@@ -26,5 +26,10 @@ export const PackagesMeta: Record<CarPackageSlug, {
     name: "Luxury",
     icon: <Crown />,
     description: "Premium experience",
+  },
+  [CarPackageSlug.ELECTRIC]: {
+    name: "Electric",
+    icon: <Zap />,
+    description: "Eco-friendly ride",
   },
 }

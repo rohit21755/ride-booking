@@ -31,6 +31,7 @@ export enum CarPackageSlug {
     SUV = "suv",
     VAN = "van",
     LUXURY = "luxury",
+    ELECTRIC = "electric",
 }
 
 export interface RouteFare {
